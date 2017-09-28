@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>react-native中navigator的基本使用 | le0zh&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文记录在react-native中navigator的基本使用，解决了页面间如何切换的问题。  注： 本文是windows环境下开发android  首先，官方文档地址如下：http://facebook.github.io/react-native/docs/navigator.html#content 从官方文档可以看到navigator的基本用法如下：1234567891011121314">
+<meta name="keywords" content="react-native,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native中navigator的基本使用">
+<meta property="og:url" content="http://le0zh.github.io/2016/01/14/navigator-in-react-native/index.html">
+<meta property="og:site_name" content="le0zh&#39;s blog">
+<meta property="og:description" content="本文记录在react-native中navigator的基本使用，解决了页面间如何切换的问题。  注： 本文是windows环境下开发android  首先，官方文档地址如下：http://facebook.github.io/react-native/docs/navigator.html#content 从官方文档可以看到navigator的基本用法如下：1234567891011121314">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com/f47f972c-f80d-42ef-91c8-78a4fb66e64b.jpg">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com/navigator.gif">
+<meta property="og:updated_time" content="2017-09-25T01:57:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-native中navigator的基本使用">
+<meta name="twitter:description" content="本文记录在react-native中navigator的基本使用，解决了页面间如何切换的问题。  注： 本文是windows环境下开发android  首先，官方文档地址如下：http://facebook.github.io/react-native/docs/navigator.html#content 从官方文档可以看到navigator的基本用法如下：1234567891011121314">
+<meta name="twitter:image" content="http://7xl2vf.com1.z0.glb.clouddn.com/f47f972c-f80d-42ef-91c8-78a4fb66e64b.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="le0zh&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">le0zh&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">//DON&#39;T PANIC</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://le0zh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-navigator-in-react-native" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/14/navigator-in-react-native/" class="article-date">
+  <time datetime="2016-01-14T09:40:12.000Z" itemprop="datePublished">2016-01-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/react-native/">react-native</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react-native中navigator的基本使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文记录在react-native中navigator的基本使用，解决了页面间如何切换的问题。</p>
+<blockquote>
+<p>注： 本文是windows环境下开发android</p>
+</blockquote>
+<p>首先，官方文档地址如下：<br><a href="http://facebook.github.io/react-native/docs/navigator.html#content" target="_blank" rel="external">http://facebook.github.io/react-native/docs/navigator.html#content</a></p>
+<p>从官方文档可以看到navigator的基本用法如下：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;Navigator</div><div class="line">  initialRoute=&#123;&#123;name: <span class="string">'My First Scene'</span>, index: <span class="number">0</span>&#125;&#125;</div><div class="line">  renderScene=&#123;(route, navigator) =&gt;</div><div class="line">    &lt;MySceneComponent</div><div class="line">      name=&#123;route.name&#125;</div><div class="line">      onForward=&#123;() =&gt; &#123;</div><div class="line">        var nextIndex = route.index + <span class="number">1</span>;</div><div class="line">        navigator.push(&#123;</div><div class="line">          name: <span class="string">'Scene '</span> + nextIndex,</div><div class="line">          index: nextIndex,</div><div class="line">        &#125;);</div><div class="line">      &#125;&#125;</div><div class="line">      onBack=&#123;() =&gt; &#123;</div><div class="line">        if (route.index &gt; <span class="number">0</span>) &#123;</div><div class="line">          navigator.pop();</div><div class="line">        &#125;</div><div class="line">      &#125;&#125;</div><div class="line">    /&gt;</div><div class="line">  &#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
+<p>从中可以看到两个最基本和必须的属性如下：</p>
+<ul>
+<li><code>initialRoute</code> : 该属性指明了一开始的初始路由，即app加载时第一次要展现什么内容</li>
+<li><code>renderScene</code> : 渲染场景函数，根据<code>route</code>参数确定显示哪些内容</li>
+</ul>
+<p>另外还经常会用到的可选属性有：</p>
+<ul>
+<li><code>configureScene</code>: 场景配置函数，允许配置场景相关的动画和手势</li>
+</ul>
+<a id="more"></a> 
+<h3 id="下面我们写一个最基本的demo"><a href="#下面我们写一个最基本的demo" class="headerlink" title="下面我们写一个最基本的demo:"></a>下面我们写一个最基本的demo:</h3><p>将代码直接都写在： <code>index.android.js</code>中了。</p>
+<p>首先是引用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">'react-native'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> &#123;</div><div class="line">    AppRegistry, View, Navigator, Text, BackAndroid, StyleSheet</div><div class="line">&#125; = React;</div><div class="line"></div><div class="line"><span class="keyword">var</span> App = <span class="built_in">require</span>(<span class="string">'./index.js'</span>);</div></pre></td></tr></table></figure></p>
+<p>然后为了在不同页面跳转，模拟创建几个不同的页面（场景），分别是首页、消息、发现和我的页面。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> HomeView = React.createClass(&#123;</div><div class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;Text&gt;首页view&lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">            &lt;/</span>View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> MessageView = React.createClass(&#123;</div><div class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;Text&gt;消息view&lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">            &lt;/</span>View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> DiscoverView = React.createClass(&#123;</div><div class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;Text&gt;发现view&lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">            &lt;/</span>View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> UserView = React.createClass(&#123;</div><div class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View&gt;</div><div class="line">                &lt;Text&gt;我的view&lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">            &lt;/</span>View&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>因为android设备存在返回按钮，所以为了保证用户体验的一致性，当用户点击了后退按钮时，需要返回上一个页面：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _navigator; <span class="comment">//用来保存navigator</span></div><div class="line"></div><div class="line"><span class="comment">//监听后退按钮的press事件，用来回退页面</span></div><div class="line">BackAndroid.addEventListener(<span class="string">'hardwareBackPress'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (_navigator.getCurrentRoutes().length === <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    _navigator.pop();</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>接下来定义app的入口：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> App = React.createClass(&#123;</div><div class="line">    configureScene: <span class="function"><span class="keyword">function</span><span class="params">(route, routeStack)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Navigator.SceneConfigs.FloatFromRight;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    renderScene: <span class="function"><span class="keyword">function</span><span class="params">(router, navigator)</span> </span>&#123;</div><div class="line">        <span class="keyword">var</span> Component = <span class="literal">null</span>;</div><div class="line">        _navigator = navigator;</div><div class="line"></div><div class="line">        <span class="keyword">switch</span> (router.name) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'home'</span>:</div><div class="line">                Component = HomeView</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'message'</span>:</div><div class="line">                Component = MessageView;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'discover'</span>:</div><div class="line">                Component = DiscoverView;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'user'</span>:</div><div class="line">                Component = UserView;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//注意这里将navigator作为属性props传递给了各个场景组件</span></div><div class="line">        <span class="keyword">return</span> &lt;Component navigator = &#123;navigator&#125; /&gt;;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    render: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;Navigator</div><div class="line">                initialRoute =&#123;&#123;name: <span class="string">'home'</span>&#125;&#125;</div><div class="line">                configureScene = &#123;<span class="keyword">this</span>.configureScene&#125;</div><div class="line">                renderScene = &#123;<span class="keyword">this</span>.renderScene&#125;&gt;</div><div class="line">            &lt;/Navigator&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'Survey'</span>, () =&gt; App);</div></pre></td></tr></table></figure></p>
+<p>这时候在模拟器运行如下：</p>
+<p><img src="http://7xl2vf.com1.z0.glb.clouddn.com/f47f972c-f80d-42ef-91c8-78a4fb66e64b.jpg" alt="截图"></p>
+<p>OK，默认显示的首页视图，但是没有办法跳转，这就是对了。。因为我们还没有加任何可以跳转的代码。</p>
+<p>下面修改首页的视图：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> styles = StyleSheet.create(&#123;</div><div class="line">    container: &#123;</div><div class="line">        backgroundColor: <span class="string">'#FFF'</span>,</div><div class="line">        flex: <span class="number">1</span>, <span class="comment">//flex-grow:1 等分剩余空间</span></div><div class="line">        justifyContent: <span class="string">'center'</span>, <span class="comment">//定义了项目在主轴上的对齐方式</span></div><div class="line">        alignItems: <span class="string">'center'</span>, <span class="comment">//定义项目在交叉轴上如何对齐</span></div><div class="line">    &#125;,</div><div class="line">    button: &#123;</div><div class="line">        borderRadius: <span class="number">5</span>,</div><div class="line">        marginTop: <span class="number">20</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> HomeView = React.createClass(&#123;</div><div class="line">    onNavPress: <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.props.navigator.push(&#123;</div><div class="line">            name: target</div><div class="line">        &#125;);</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View style = &#123;styles.container&#125;&gt;</div><div class="line">                &lt;Text&gt;首页view&lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">                &lt;Text style=&#123;styles.button&#125; onPress=&#123;() =&gt; this.onNavPress('message')&#125;&gt;跳转到 [消息]&lt;/</span>Text&gt;</div><div class="line">                &lt;Text style=&#123;styles.button&#125; onPress=&#123;() =&gt; <span class="keyword">this</span>.onNavPress(<span class="string">'discover'</span>)&#125;&gt;跳转到 [发现]&lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">                &lt;Text style=&#123;styles.button&#125; onPress=&#123;() =&gt; this.onNavPress('user')&#125;&gt;跳转到 [我的]&lt;/</span>Text&gt;</div><div class="line">            &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">        );</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp">&#125;);</span></div></pre></td></tr></table></figure></p>
+<p>增加了简单的居中样式，然后增加了几个”按钮“，<code>onNavPress</code>方法中根据传入的参数，跳转到相应的页面。<br>下面以消息页面为例，看在各个子页面中，如何回退:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> MessageView = React.createClass(&#123;</div><div class="line">    goBack: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.props.navigator.pop();</div><div class="line">    &#125;,</div><div class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            &lt;View style = &#123;styles.container&#125;&gt;</div><div class="line">                &lt;Text&gt;消息view&lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">                &lt;Text style=&#123;styles.button&#125; onPress =&#123;this.goBack&#125;&gt;后退&lt;/</span>Text&gt;</div><div class="line">            &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">        );</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp">&#125;);</span></div></pre></td></tr></table></figure></p>
+<p>是的，具体就在<code>goBack</code>方法中。</p>
+<p>最终效果：</p>
+<p><img src="http://7xl2vf.com1.z0.glb.clouddn.com/navigator.gif" alt="gif"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://le0zh.github.io/2016/01/14/navigator-in-react-native/" data-id="cj844v90q001v3ws6hkrik5yc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-native/">react-native</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/15/drawer-in-react-natvie/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          react-native中DrawerLayoutAndroid的基本使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/14/watcher-took-too-long-to-load/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">react-native在windows下Watcher took too long to load的错误解决</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/exception/">exception</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/myproject/">myproject</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题记录/">问题记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstips/">jstips</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/myproject/">myproject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react-native</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext/">sublimetext</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/you-dont-know-js/">you-dont-know-js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/dva/" style="font-size: 10px;">dva</a> <a href="/tags/es6/" style="font-size: 11.67px;">es6</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/jstips/" style="font-size: 16.67px;">jstips</a> <a href="/tags/myproject/" style="font-size: 10px;">myproject</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/react-native/" style="font-size: 18.33px;">react-native</a> <a href="/tags/sublimetext/" style="font-size: 10px;">sublimetext</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tools/" style="font-size: 11.67px;">tools</a> <a href="/tags/unity/" style="font-size: 13.33px;">unity</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/you-dont-know-js/" style="font-size: 10px;">you-dont-know-js</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/25/dva-model-subscriptions/">dva框架学习--Subscription订阅</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/vscode-regexp-repveiw/">vscode插件：正则表达式预览</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/you-dont-know-try-finally/">你可能不知道的try...finally</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/26/function-bind-polyfill/">写一个尽可能完善的Function.prototype.bind方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/12/gitbook-reader/">使用ReactNative开发的gitbook阅读器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 le0zh<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

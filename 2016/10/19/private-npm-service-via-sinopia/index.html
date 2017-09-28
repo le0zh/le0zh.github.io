@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用sinopia搭建私有服务器 | le0zh&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="github: https://github.com/rlidwka/sinopia">
+<meta name="keywords" content="tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用sinopia搭建私有服务器">
+<meta property="og:url" content="http://le0zh.github.io/2016/10/19/private-npm-service-via-sinopia/index.html">
+<meta property="og:site_name" content="le0zh&#39;s blog">
+<meta property="og:description" content="github: https://github.com/rlidwka/sinopia">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com//blog/sinopia.png">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com//blog/dict.png">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com//blog/web.png">
+<meta property="og:updated_time" content="2017-09-25T01:57:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用sinopia搭建私有服务器">
+<meta name="twitter:description" content="github: https://github.com/rlidwka/sinopia">
+<meta name="twitter:image" content="http://7xl2vf.com1.z0.glb.clouddn.com//blog/sinopia.png">
+  
+    <link rel="alternative" href="/atom.xml" title="le0zh&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">le0zh&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">//DON&#39;T PANIC</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://le0zh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-private-npm-service-via-sinopia" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/19/private-npm-service-via-sinopia/" class="article-date">
+  <time datetime="2016-10-19T01:53:12.000Z" itemprop="datePublished">2016-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tools/">tools</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用sinopia搭建私有服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://7xl2vf.com1.z0.glb.clouddn.com//blog/sinopia.png" alt="img"></p>
+<p>github: <a href="https://github.com/rlidwka/sinopia" target="_blank" rel="external">https://github.com/rlidwka/sinopia</a></p>
+<p><img src="http://7xl2vf.com1.z0.glb.clouddn.com//blog/dict.png" alt="img"></p>
+<a id="more"></a>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> installation and starting (application will create default</span></div><div class="line"><span class="meta">#</span><span class="bash"> config <span class="keyword">in</span> config.yaml you can edit later)</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install -g sinopia</span></div></pre></td></tr></table></figure>
+<p><em>如果需要https支持:</em><br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">if</span> you <span class="keyword">use</span> HTTPS, add <span class="keyword">an</span> appropriate <span class="keyword">CA</span> information</div><div class="line"># (<span class="string">"null"</span> <span class="keyword">means</span> get <span class="keyword">CA</span> <span class="keyword">list</span> from OS)</div><div class="line">$ npm <span class="keyword">set</span> <span class="keyword">ca</span> null</div></pre></td></tr></table></figure></p>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 使用默认配置的方式</span></div><div class="line"><span class="meta">$</span><span class="bash"> sinopia</span></div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> 指定配置文件和监听端口的方式</span></div><div class="line"><span class="meta">$</span><span class="bash"> sinopia --config ./config/webl.yaml --listen 0.0.0.0:4873</span></div></pre></td></tr></table></figure>
+<p>启动后，访问 <code>http://localhost:4873/</code>  可以看到下面的页面,里面列出来了所有的【私有】模块</p>
+<p><img src="http://7xl2vf.com1.z0.glb.clouddn.com//blog/web.png" alt="img"></p>
+<p>使用<code>pm2</code>启动:(守护进程， 部署服务器时一定要用这种启动方式)<br>如果没有安装pm2，先安装<code>npm install pm2 -g</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> pm2 start <span class="built_in">which</span> sinopia</span></div></pre></td></tr></table></figure>
+<h3 id="sinopia服务端配置"><a href="#sinopia服务端配置" class="headerlink" title="sinopia服务端配置"></a>sinopia服务端配置</h3><p>sinopia运行后，会打印出来默认的配置文件位置<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">le0zh@ProDesk:~/code/router-mock-server$</span> <span class="string">sinopia</span></div><div class="line"> <span class="string">warn</span>  <span class="meta">---</span> <span class="string">config</span> <span class="string">file</span>  <span class="bullet">-</span> <span class="string">/home/le0zh/.config/sinopia/config.yaml</span></div><div class="line"> <span class="string">warn</span>  <span class="meta">---</span> <span class="string">http</span> <span class="string">address</span> <span class="bullet">-</span> <span class="attr">http://localhost:4873/</span></div></pre></td></tr></table></figure></p>
+<p>其中<code>config.yaml</code>就是主要的配置文件，同时其同级目录下会有<code>htpasswd</code> 文件（添加用户后，自动创建的，保存认证信息）。<br>另外还有一个<code>storage</code>文件夹，用于存放package，其目录在<code>config.yaml</code>中配置。</p>
+<p>下面是修改过的<code>config.yaml</code>，注意注释：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># This is the default config file. It allows all users to do anything,</span></div><div class="line"><span class="comment"># so don't use it on production systems.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Look here for more config file examples:</span></div><div class="line"><span class="comment"># https://github.com/rlidwka/sinopia/tree/master/conf</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="comment"># path to a directory with all packages</span></div><div class="line"><span class="attr">storage:</span> <span class="string">./storage</span>  <span class="string">//npm包存放的路径</span></div><div class="line"></div><div class="line"><span class="attr">auth:</span></div><div class="line"><span class="attr">  htpasswd:</span></div><div class="line">    <span class="comment"># 保存用户的账号密码等信息</span></div><div class="line"><span class="attr">    file:</span> <span class="string">./htpasswd</span>   </div><div class="line">    <span class="comment"># Maximum amount of users allowed to register, defaults to "+inf".</span></div><div class="line">    <span class="comment"># You can set this to -1 to disable registration.</span></div><div class="line">    <span class="comment"># 默认为1000，改为-1，禁止注册</span></div><div class="line"><span class="attr">    max_users:</span> <span class="bullet">-1</span>  </div><div class="line"></div><div class="line"><span class="comment"># a list of other known repositories we can talk to</span></div><div class="line"><span class="attr">uplinks:</span></div><div class="line"><span class="attr">  npmjs:</span></div><div class="line">    <span class="comment"># 默认为npm的官网，由于国情，修改 url 让sinopia使用 淘宝的npm镜像地址</span></div><div class="line"><span class="attr">    url:</span> <span class="attr">http://registry.npm.taobao.org/</span>  </div><div class="line"></div><div class="line"><span class="comment"># 配置权限管理</span></div><div class="line"></div><div class="line"><span class="attr">packages:</span> </div><div class="line"><span class="attr">  'react-native':</span></div><div class="line">    <span class="comment"># react-native 覆盖public包，使用内部的包</span></div><div class="line"><span class="attr">    access:</span> <span class="string">$all</span></div><div class="line"><span class="attr">    publish:</span> <span class="string">$authenticated</span></div><div class="line"></div><div class="line">  <span class="string">'@*/*'</span><span class="string">:</span></div><div class="line">    <span class="comment"># scoped packages 内部包</span></div><div class="line">    <span class="comment"># 表示哪一类用户可以对匹配的项目进行安装(install)</span></div><div class="line"><span class="attr">    access:</span> <span class="string">$all</span></div><div class="line"><span class="attr">    publish:</span> <span class="string">$authenticated</span></div><div class="line"></div><div class="line">  <span class="string">'*'</span><span class="string">:</span></div><div class="line">    <span class="comment"># 公共包</span></div><div class="line">    <span class="comment"># allow all users (including non-authenticated users) to read and</span></div><div class="line">    <span class="comment"># publish all packages</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># you can specify usernames/groupnames (depending on your auth plugin)</span></div><div class="line">    <span class="comment"># and three keywords: "$all", "$anonymous", "$authenticated"</span></div><div class="line"><span class="attr">    access:</span> <span class="string">$all</span></div><div class="line"></div><div class="line">    <span class="comment"># allow all known users to publish packages</span></div><div class="line">    <span class="comment"># (anyone can register by default, remember?)</span></div><div class="line"><span class="attr">    publish:</span> <span class="string">$authenticated</span></div><div class="line"></div><div class="line">    <span class="comment"># if package is not available locally, proxy requests to 'npmjs' registry</span></div><div class="line"><span class="attr">    proxy:</span> <span class="string">npmjs</span></div><div class="line"></div><div class="line"><span class="comment"># log settings</span></div><div class="line"><span class="attr">logs:</span></div><div class="line"><span class="bullet">  -</span> <span class="string">&#123;type:</span> <span class="string">stdout,</span> <span class="attr">format:</span> <span class="string">pretty,</span> <span class="attr">level:</span> <span class="string">http&#125;</span></div><div class="line">  <span class="comment">#- &#123;type: file, path: sinopia.log, level: info&#125;</span></div><div class="line"></div><div class="line"><span class="comment"># you can specify listen address (or simply a port)</span></div><div class="line"><span class="comment"># 默认没有，只能在本机访问，添加后可以通过外网访问。</span></div><div class="line"><span class="attr">listen:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span><span class="string">:4873</span></div></pre></td></tr></table></figure>
+<h4 id="覆盖public包"><a href="#覆盖public包" class="headerlink" title="覆盖public包"></a>覆盖public包</h4><p>比如我们的需求是，覆盖react-native的public包，使用我们自己的包，配置的方法就是在上面package节点，增加一个入口，同时移除其proxy属性即可。<br>注意：有可能有缓存，导致publish失败，这时候可以修改version为更高的版本，或者到storage文件夹下删除对应的缓存包即可!!</p>
+<h3 id="客户端使用"><a href="#客户端使用" class="headerlink" title="客户端使用"></a>客户端使用</h3><blockquote>
+<p>开发人员其实只需要关注如何使用</p>
+</blockquote>
+<p>首先需要修改npm配置的registry，有两种方式：</p>
+<ol>
+<li><p>永久的方式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> npm configuration</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm <span class="built_in">set</span> registry http://localhost:4873/</span></div></pre></td></tr></table></figure>
+<p>可以使用命令<code>$ npm config get registry</code>检查自己当前的registry源配置。<br>将本机的npm直接指向私有服务器，之后按正常的方式使用npm就可以了。</p>
+</li>
+<li><p>临时的方式：<br> 在使用npm命令时，加上<code>--registry</code>参数，比如:</p>
+ <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install react <span class="params">--save</span> <span class="params">--registry</span>  http:<span class="string">//localhost</span><span class="function">:4873</span>/</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>但是推荐使用nrm管理npm的源：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> npm install -g nrm <span class="comment"># 安装nrm</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> nrm add XXXXX http://XXXXXX:4873 <span class="comment"># 添加本地的npm镜像地址</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> nrm use XXXX <span class="comment"># 使用本址的镜像地址</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> nrm --<span class="built_in">help</span>  <span class="comment"># 查看nrm命令帮助</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> nrm list <span class="comment"># 列出可用的 npm 镜像地址</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> nrm use taobao <span class="comment"># 使用`淘宝npm`镜像地址</span></span></div></pre></td></tr></table></figure>
+<p>比如：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>nrm add webl <span class="symbol">http:</span>/<span class="regexp">/10.57.177.232:4873/</span></div><div class="line"><span class="variable">$ </span>nrm <span class="keyword">use</span> webl</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://le0zh.github.io/2016/10/19/private-npm-service-via-sinopia/" data-id="cj844v90x002b3ws65lo0ql7r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/28/react-native-android-naviatrion-bar-title-center/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          react-native-android下NavigationBar的title居中
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/29/npm-dependencies-via-git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">为npm依赖包指定git仓库</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/exception/">exception</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/myproject/">myproject</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题记录/">问题记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstips/">jstips</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/myproject/">myproject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react-native</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext/">sublimetext</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/you-dont-know-js/">you-dont-know-js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/dva/" style="font-size: 10px;">dva</a> <a href="/tags/es6/" style="font-size: 11.67px;">es6</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/jstips/" style="font-size: 16.67px;">jstips</a> <a href="/tags/myproject/" style="font-size: 10px;">myproject</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/react-native/" style="font-size: 18.33px;">react-native</a> <a href="/tags/sublimetext/" style="font-size: 10px;">sublimetext</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tools/" style="font-size: 11.67px;">tools</a> <a href="/tags/unity/" style="font-size: 13.33px;">unity</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/you-dont-know-js/" style="font-size: 10px;">you-dont-know-js</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/25/dva-model-subscriptions/">dva框架学习--Subscription订阅</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/vscode-regexp-repveiw/">vscode插件：正则表达式预览</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/you-dont-know-try-finally/">你可能不知道的try...finally</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/26/function-bind-polyfill/">写一个尽可能完善的Function.prototype.bind方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/12/gitbook-reader/">使用ReactNative开发的gitbook阅读器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 le0zh<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

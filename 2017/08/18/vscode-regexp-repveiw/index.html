@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vscode插件：正则表达式预览 | le0zh&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="曾一度对正则表达式望而却步，直到遇到了神器 https://regexper.com/ 在使用时，经常遇到下面的场景：  复制代码中的正则表达式，到网站中查看图形预览 跳出代码编辑器，在网址中编写正则表达式并查看图形预览（新手向） 网络抽风，神器打开很慢  既然使用了扩展性这么强的vscode，为什么不搞一个扩展呢？搜了一下还没有类似的，自己写一个(基于regexper-static)。  本文就">
+<meta name="keywords" content="vscode,myproject">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode插件：正则表达式预览">
+<meta property="og:url" content="http://le0zh.github.io/2017/08/18/vscode-regexp-repveiw/index.html">
+<meta property="og:site_name" content="le0zh&#39;s blog">
+<meta property="og:description" content="曾一度对正则表达式望而却步，直到遇到了神器 https://regexper.com/ 在使用时，经常遇到下面的场景：  复制代码中的正则表达式，到网站中查看图形预览 跳出代码编辑器，在网址中编写正则表达式并查看图形预览（新手向） 网络抽风，神器打开很慢  既然使用了扩展性这么强的vscode，为什么不搞一个扩展呢？搜了一下还没有类似的，自己写一个(基于regexper-static)。  本文就">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com//vscode/preview.gif">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com//vscode/editor.gif">
+<meta property="og:updated_time" content="2017-09-25T01:57:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vscode插件：正则表达式预览">
+<meta name="twitter:description" content="曾一度对正则表达式望而却步，直到遇到了神器 https://regexper.com/ 在使用时，经常遇到下面的场景：  复制代码中的正则表达式，到网站中查看图形预览 跳出代码编辑器，在网址中编写正则表达式并查看图形预览（新手向） 网络抽风，神器打开很慢  既然使用了扩展性这么强的vscode，为什么不搞一个扩展呢？搜了一下还没有类似的，自己写一个(基于regexper-static)。  本文就">
+<meta name="twitter:image" content="http://7xl2vf.com1.z0.glb.clouddn.com//vscode/preview.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="le0zh&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">le0zh&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">//DON&#39;T PANIC</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://le0zh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vscode-regexp-repveiw" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/18/vscode-regexp-repveiw/" class="article-date">
+  <time datetime="2017-08-18T02:02:12.000Z" itemprop="datePublished">2017-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/myproject/">myproject</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vscode插件：正则表达式预览
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>曾一度对正则表达式望而却步，直到遇到了神器 <a href="https://regexper.com/" target="_blank" rel="external">https://regexper.com/</a></p>
+<p>在使用时，经常遇到下面的场景：</p>
+<ul>
+<li>复制代码中的正则表达式，到网站中查看图形预览</li>
+<li>跳出代码编辑器，在网址中编写正则表达式并查看图形预览（新手向）</li>
+<li>网络抽风，神器打开很慢</li>
+</ul>
+<p>既然使用了扩展性这么强的vscode，为什么不搞一个扩展呢？搜了一下还没有类似的，自己写一个(基于<a href="https://github.com/javallone/regexper-static" target="_blank" rel="external">regexper-static</a>)。</p>
+<blockquote>
+<p>本文就是个预(guang)热(gao)，需要的同学可以试用，关于开发记录会另开一篇文章。</p>
+</blockquote>
+<h4 id="预览功能"><a href="#预览功能" class="headerlink" title="预览功能"></a>预览功能</h4><p><img src="http://7xl2vf.com1.z0.glb.clouddn.com//vscode/preview.gif" alt="img"></p>
+<h4 id="编辑功能"><a href="#编辑功能" class="headerlink" title="编辑功能"></a>编辑功能</h4><p><img src="http://7xl2vf.com1.z0.glb.clouddn.com//vscode/editor.gif" alt="img"></p>
+<h4 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h4><ul>
+<li><p>打开vscode，<code>ctrl</code> + <code>p</code>打开Quick Open并输入：<br><code>ext install vscode-regexp-preivew</code></p>
+</li>
+<li><p>或者直接在vscode扩展中搜索<code>regexp preivew</code></p>
+</li>
+</ul>
+<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><ul>
+<li>源码链接： <a href="https://github.com/le0zh/vscode-regexp-preivew" target="_blank" rel="external">github</a></li>
+<li>Marketplace链接： <a href="https://marketplace.visualstudio.com/items?itemName=le0zh.vscode-regexp-preivew" target="_blank" rel="external">marketplace.visualstudio</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://le0zh.github.io/2017/08/18/vscode-regexp-repveiw/" data-id="cj844v91s00443ws6rql5doie" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/myproject/">myproject</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/25/dva-model-subscriptions/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          dva框架学习--Subscription订阅
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/31/you-dont-know-try-finally/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">你可能不知道的try...finally</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/exception/">exception</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/myproject/">myproject</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题记录/">问题记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstips/">jstips</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/myproject/">myproject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react-native</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext/">sublimetext</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/you-dont-know-js/">you-dont-know-js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/dva/" style="font-size: 10px;">dva</a> <a href="/tags/es6/" style="font-size: 11.67px;">es6</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/jstips/" style="font-size: 16.67px;">jstips</a> <a href="/tags/myproject/" style="font-size: 10px;">myproject</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/react-native/" style="font-size: 18.33px;">react-native</a> <a href="/tags/sublimetext/" style="font-size: 10px;">sublimetext</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tools/" style="font-size: 11.67px;">tools</a> <a href="/tags/unity/" style="font-size: 13.33px;">unity</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/you-dont-know-js/" style="font-size: 10px;">you-dont-know-js</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/25/dva-model-subscriptions/">dva框架学习--Subscription订阅</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/vscode-regexp-repveiw/">vscode插件：正则表达式预览</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/you-dont-know-try-finally/">你可能不知道的try...finally</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/26/function-bind-polyfill/">写一个尽可能完善的Function.prototype.bind方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/12/gitbook-reader/">使用ReactNative开发的gitbook阅读器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 le0zh<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>es6中的箭头函数 | le0zh&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作为ES6的一个新特性，箭头函数(fat arrow function)作为一种可以方便的可以写更少的代码的语法出现了。它的名字来源于它的语法=&amp;gt;，就是一个“大箭头”（和“小箭头”-&amp;gt;相比）。一些开发者或许已经从其他变成语言中遇到了这种类型的函数，比如在Haskell中，被称为“lamba表达式”，或者“匿名函数”。它被之所以被称为匿名函数，是因为这中箭头函数并没有一个显示声明的函数名">
+<meta name="keywords" content="javascript,jstips">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6中的箭头函数">
+<meta property="og:url" content="http://le0zh.github.io/2016/03/09/fat-arrow-functoion/index.html">
+<meta property="og:site_name" content="le0zh&#39;s blog">
+<meta property="og:description" content="作为ES6的一个新特性，箭头函数(fat arrow function)作为一种可以方便的可以写更少的代码的语法出现了。它的名字来源于它的语法=&amp;gt;，就是一个“大箭头”（和“小箭头”-&amp;gt;相比）。一些开发者或许已经从其他变成语言中遇到了这种类型的函数，比如在Haskell中，被称为“lamba表达式”，或者“匿名函数”。它被之所以被称为匿名函数，是因为这中箭头函数并没有一个显示声明的函数名">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-25T01:57:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="es6中的箭头函数">
+<meta name="twitter:description" content="作为ES6的一个新特性，箭头函数(fat arrow function)作为一种可以方便的可以写更少的代码的语法出现了。它的名字来源于它的语法=&amp;gt;，就是一个“大箭头”（和“小箭头”-&amp;gt;相比）。一些开发者或许已经从其他变成语言中遇到了这种类型的函数，比如在Haskell中，被称为“lamba表达式”，或者“匿名函数”。它被之所以被称为匿名函数，是因为这中箭头函数并没有一个显示声明的函数名">
+  
+    <link rel="alternative" href="/atom.xml" title="le0zh&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">le0zh&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">//DON&#39;T PANIC</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://le0zh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-fat-arrow-functoion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/09/fat-arrow-functoion/" class="article-date">
+  <time datetime="2016-03-09T09:40:12.000Z" itemprop="datePublished">2016-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      es6中的箭头函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作为ES6的一个新特性，箭头函数(fat arrow function)作为一种可以方便的可以写更少的代码的语法出现了。它的名字来源于它的语法<code>=&gt;</code>，就是一个“大箭头”（和“小箭头”<code>-&gt;</code>相比）。一些开发者或许已经从其他变成语言中遇到了这种类型的函数，比如在Haskell中，被称为“lamba表达式”，或者“匿名函数”。它被之所以被称为匿名函数，是因为这中箭头函数并没有一个显示声明的函数名。</p>
+<a id="more"></a>
+<h3 id="有什么好处？"><a href="#有什么好处？" class="headerlink" title="有什么好处？"></a>有什么好处？</h3><ul>
+<li>语法：更少的代码行；再也不用一次次的输入<code>function</code> 关键字了</li>
+<li>语义：从周围的上下文环境中捕获 <code>this</code> </li>
+</ul>
+<h3 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h3><p>看下下面两个代码片段的例子，他们的作用是一样的，然后你将会快速的明白箭头函数是干什么用的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 箭头函数的基本语法</span></div><div class="line">param =&gt; expression</div><div class="line"></div><div class="line"><span class="comment">// 还可以加上括号</span></div><div class="line"><span class="comment">// 当有多于一个参数的时候，括号是必须的</span></div><div class="line">(param1 [, param2]) =&gt; expression</div><div class="line"></div><div class="line"><span class="comment">// 使用普通函数的形式</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">1</span>];</div><div class="line"><span class="keyword">var</span> arrFunc = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x * x;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(arr)</div><div class="line"></div><div class="line"><span class="comment">// 使用箭头函数的形式</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">1</span>];</div><div class="line"><span class="keyword">var</span> arrFunc = arr.map(<span class="function">(<span class="params">x</span>) =&gt;</span> x*x);</div><div class="line"><span class="built_in">console</span>.log(arr)</div></pre></td></tr></table></figure>
+<p>我们可以看到，这种情况下箭头函数的形式我们就不用写大括号和函数的返回值，从而节省时间。这里建议总是将参数写在小括号里，因为当有多个参数的情况下，小括号是必须的，比如<code>(x,y) =&gt; x+y</code>，这仅仅是为了保持一致，防止一些情况下忘记了。但是上面的代码同样可以写成<code>x =&gt; x*x</code> 。目前来说，这仅仅是语法上的改进，可以少些一些代码同时提高可读性。</p>
+<h3 id="Lexically-binding-this"><a href="#Lexically-binding-this" class="headerlink" title="Lexically binding this"></a>Lexically binding this</h3><p>另外还有一个很好的理由来使用箭头函数。关于<code>this</code> 的上下文环境总是有很多问题。使用箭头函数，你再也不用考虑<code>.bind(this)</code> 或者设置 <code>that = this</code> 了，箭头函数将从当前的lexical 记录当前上下文的<code>this</code>。看下面的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 全局地定义 this.i</span></div><div class="line"><span class="keyword">this</span>.i = <span class="number">100</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> counterA = <span class="keyword">new</span> CounterA();</div><div class="line"><span class="keyword">var</span> counterB = <span class="keyword">new</span> CounterB();</div><div class="line"><span class="keyword">var</span> counterC = <span class="keyword">new</span> CounterC();</div><div class="line"><span class="keyword">var</span> counterD = <span class="keyword">new</span> CounterD()</div><div class="line"></div><div class="line"><span class="comment">// 不好的例子</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CounterA</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 这里的this指向CounterA的实例</span></div><div class="line">  <span class="keyword">this</span>.i = <span class="number">0</span>;</div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 这里的this指向全局对象，而不是CounterA的实例</span></div><div class="line">    <span class="comment">// 因此该计数器将从100开始计数，而不是0（局部变量this.i）</span></div><div class="line">    <span class="keyword">this</span>.i++;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"counterA"</span>).innerHTML = <span class="keyword">this</span>.i;</div><div class="line">  &#125;, <span class="number">500</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 手动的绑定that = this</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CounterB</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.i = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">true<span class="comment">//可以从0开始计数</span></div><div class="line">    that.i++;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"counterB"</span>).innerHTML = that.i;</div><div class="line">  &#125;, <span class="number">500</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用.bind(this)</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CounterC</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.i = <span class="number">0</span>;</div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.i++;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"counterC"</span>).innerHTML = <span class="keyword">this</span>.i;</div><div class="line">  &#125;.bind(<span class="keyword">this</span>), <span class="number">500</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用箭头函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CounterD</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.i = <span class="number">0</span>;</div><div class="line">  setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">this</span>.i++;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"counterD"</span>).innerHTML = <span class="keyword">this</span>.i;</div><div class="line">  &#125;, <span class="number">500</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>关于箭头函数的更多内容，请参考文档 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="external">MDN</a></p>
+<blockquote>
+<p>本文是js tips系列，翻译自 <a href="https://github.com/loverajoel/jstips" target="_blank" rel="external">https://github.com/loverajoel/jstips</a></p>
+</blockquote>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>比如<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="function"><span class="keyword">func</span> = <span class="title">x</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> x++;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p><strong>在箭头函数里面，arguments没有定义</strong><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(arguments); <span class="regexp">//</span> <span class="keyword">not</span> <span class="keyword">defined</span></div></pre></td></tr></table></figure></p>
+<p><strong>同样可以使用typeof和instanceof</strong><br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func instanceof <span class="function"><span class="keyword">Function</span>;</span> <span class="comment">// true</span></div><div class="line">typeof func; <span class="comment">// function</span></div><div class="line">func.<span class="keyword">constructor</span> == <span class="function"><span class="keyword">Function</span>;</span> <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p><strong>尽管是function类型，但是不能作为构造函数</strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> instance= new <span class="function"><span class="keyword">func</span><span class="params">()</span></span>; <span class="comment">// TypeError: func is not a constructor</span></div></pre></td></tr></table></figure></p>
+<p><strong>没有prototype</strong><br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span>.<span class="title">prototype</span>; // <span class="title">undefined</span></span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://le0zh.github.io/2016/03/09/fat-arrow-functoion/" data-id="cj844v90f000y3ws6jziebo0x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jstips/">jstips</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/11/webpack-es6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用webpack+babel开始es6开发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/04/use-cnpm/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在国内使用cnpm代替npm</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/exception/">exception</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/myproject/">myproject</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题记录/">问题记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstips/">jstips</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/myproject/">myproject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react-native</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext/">sublimetext</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/you-dont-know-js/">you-dont-know-js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/dva/" style="font-size: 10px;">dva</a> <a href="/tags/es6/" style="font-size: 11.67px;">es6</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/jstips/" style="font-size: 16.67px;">jstips</a> <a href="/tags/myproject/" style="font-size: 10px;">myproject</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/react-native/" style="font-size: 18.33px;">react-native</a> <a href="/tags/sublimetext/" style="font-size: 10px;">sublimetext</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tools/" style="font-size: 11.67px;">tools</a> <a href="/tags/unity/" style="font-size: 13.33px;">unity</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/you-dont-know-js/" style="font-size: 10px;">you-dont-know-js</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/25/dva-model-subscriptions/">dva框架学习--Subscription订阅</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/vscode-regexp-repveiw/">vscode插件：正则表达式预览</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/you-dont-know-try-finally/">你可能不知道的try...finally</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/26/function-bind-polyfill/">写一个尽可能完善的Function.prototype.bind方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/12/gitbook-reader/">使用ReactNative开发的gitbook阅读器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 le0zh<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

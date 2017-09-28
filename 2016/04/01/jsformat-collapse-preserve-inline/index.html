@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jsformat+collapse-preserve-inline保留小对象一行格式的配置 | le0zh&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用SublimeText开发react的同学注意了，当使用jsformat插件格式化React代码的时候，会出现下面的情况：import`组件的时候: 默认参数的情况: 而一般来说，我还是习惯下面的方式:  当然如果你更喜欢使用上面的方式，可以退出阅读啦。">
+<meta name="keywords" content="sublimetext">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsformat+collapse-preserve-inline保留小对象一行格式的配置">
+<meta property="og:url" content="http://le0zh.github.io/2016/04/01/jsformat-collapse-preserve-inline/index.html">
+<meta property="og:site_name" content="le0zh&#39;s blog">
+<meta property="og:description" content="使用SublimeText开发react的同学注意了，当使用jsformat插件格式化React代码的时候，会出现下面的情况：import`组件的时候: 默认参数的情况: 而一般来说，我还是习惯下面的方式:  当然如果你更喜欢使用上面的方式，可以退出阅读啦。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/50a1520d-2db0-4ce5-81ad-c36a1b9ff18e.png">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/64458851-b01c-4327-8bc7-4dff730516c5.png">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/6c4e8212-a115-4e27-8b5e-9f33ff3b4cec.png">
+<meta property="og:image" content="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/64e458b9-9ea4-4bb6-a61b-16e87ee1cbf4.png">
+<meta property="og:updated_time" content="2017-09-25T01:57:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jsformat+collapse-preserve-inline保留小对象一行格式的配置">
+<meta name="twitter:description" content="使用SublimeText开发react的同学注意了，当使用jsformat插件格式化React代码的时候，会出现下面的情况：import`组件的时候: 默认参数的情况: 而一般来说，我还是习惯下面的方式:  当然如果你更喜欢使用上面的方式，可以退出阅读啦。">
+<meta name="twitter:image" content="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/50a1520d-2db0-4ce5-81ad-c36a1b9ff18e.png">
+  
+    <link rel="alternative" href="/atom.xml" title="le0zh&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">le0zh&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">//DON&#39;T PANIC</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://le0zh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jsformat-collapse-preserve-inline" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/01/jsformat-collapse-preserve-inline/" class="article-date">
+  <time datetime="2016-04-01T05:40:12.000Z" itemprop="datePublished">2016-04-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tools/">tools</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jsformat+collapse-preserve-inline保留小对象一行格式的配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用SublimeText开发react的同学注意了，当使用jsformat插件格式化React代码的时候，会出现下面的情况：<br>import`组件的时候:<br><img src="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/50a1520d-2db0-4ce5-81ad-c36a1b9ff18e.png" alt="img"></p>
+<p>默认参数的情况:<br><img src="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/64458851-b01c-4327-8bc7-4dff730516c5.png" alt="img"></p>
+<p>而一般来说，我还是习惯下面的方式:</p>
+<blockquote>
+<p>当然如果你更喜欢使用上面的方式，可以退出阅读啦。</p>
+</blockquote>
+<p><img src="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/6c4e8212-a115-4e27-8b5e-9f33ff3b4cec.png" alt="img"></p>
+<p><img src="http://7xl2vf.com1.z0.glb.clouddn.com/blog/jsformat/64e458b9-9ea4-4bb6-a61b-16e87ee1cbf4.png" alt="img"></p>
+<a id="more"></a>
+<h4 id="调查"><a href="#调查" class="headerlink" title="调查"></a>调查</h4><p>查阅了很多资料，定位到了jsformat里面使用的js-beautify同样有相同的问题，比如下面这个issue:<br><a href="https://github.com/beautify-web/js-beautify/pull/853" target="_blank" rel="external">https://github.com/beautify-web/js-beautify/pull/853</a></p>
+<p>并且js-beautify在最新的版本中，新加入了一个参数配置：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"brace_style"</span>: <span class="string">"collapse-preserve-inline"</span></div></pre></td></tr></table></figure></p>
+<p>来实现将字面量对象保留在一行的代码风格。</p>
+<p>兴冲冲的修改了jsformat的config，发现报错，说<code>brace_style</code>没有<code>collapse-preserve-inline</code>的属性，ho—no!</p>
+<p>大概查了下，跟设想的一样，jsformat没有更新js-beautify的版本，看了下jsformat的<a href="https://github.com/jdc0589/JsFormat" target="_blank" rel="external">github</a>，里面也有请求更新js-beautify版本的<a href="https://github.com/jdc0589/JsFormat/issues/165" target="_blank" rel="external">issue</a>，但是作者木有回复，可能是比较忙吧，木有办法，手工替换升级吧。</p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>先放出升级后的jsforamt插件包：<br><a href="http://7xl2vf.com1.z0.glb.clouddn.com/st3JsFormat.sublime-package" target="_blank" rel="external">下载地址</a></p>
+<p>使用方法：</p>
+<ol>
+<li>将下载到的文件放到Installed Packages文件中，比如我的windows版本的地址是<code>D:\IDE\Sublime Text Build 3083 x64\Data\Installed Packages</code></li>
+<li>修改jsformat的配置如下：(关键是<code>brace_style</code>的设置)<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//兼容jsx</span></div><div class="line"><span class="string">"e4x"</span>: <span class="literal">true</span>,</div><div class="line"><span class="comment">// 自动保存</span></div><div class="line"><span class="string">"format_on_save"</span>: <span class="literal">true</span>,</div><div class="line"> <span class="comment">// &#123;&#125;大括号不再强制换行</span></div><div class="line"> <span class="string">"brace_style"</span>: <span class="string">"collapse-preserve-inline"</span>,</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>done</strong></p>
+<h4 id="下面看下遇到一个小问题："><a href="#下面看下遇到一个小问题：" class="headerlink" title="下面看下遇到一个小问题："></a>下面看下遇到一个小问题：</h4><p>当我把替换后jsformat插件包放到Installed Packages文件夹后，当时ST中是生效的，但是当重启之后，jsformat插件莫名就消失了。。。。</p>
+<p>查看日志发现这个插件包被当做”orphaned package”被干掉了，google一番之后，发现了这个链接：<br><a href="https://forum.sublimetext.com/t/sublime-keeps-deleting-my-loose-packages/15691" target="_blank" rel="external">https://forum.sublimetext.com/t/sublime-keeps-deleting-my-loose-packages/15691</a></p>
+<p>帖子的回复已经很清楚了，大概意思是ST会检测包文件里面的有没有<code>package-metadata.json</code>文件，<br>如果有，则Package Control认为它对该插件包有管理权，然后会和<code>installed_packages</code>中的数据比较（BTW，如果使用Package Contro安装的插件，都会记录在改文件中），当发现<code>installed_packages</code>中没有改插件信息时，就认为它是”orphaned package”，做清理操作，这个设计是为了用户在不同机器上同步插件时使用。</p>
+<p>因为我们不是通过Package Control安装的，所以解决办法也很简单，将插件包里面的<code>package-metadata.json</code>文件删除即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://le0zh.github.io/2016/04/01/jsformat-collapse-preserve-inline/" data-id="cj844v90o001n3ws6aldu9kuz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublimetext/">sublimetext</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/05/even-simpler-way-of-using-indexof-as-a-contains-clause/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (#15) 利用IndexOf判断字符串是否包含时，更简单的判断使用方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/29/delete-node-module-folder-in-windows/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">windows文件目录路径过长导致不能删除的问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/exception/">exception</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/myproject/">myproject</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题记录/">问题记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstips/">jstips</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/myproject/">myproject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react-native</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext/">sublimetext</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/you-dont-know-js/">you-dont-know-js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/dva/" style="font-size: 10px;">dva</a> <a href="/tags/es6/" style="font-size: 11.67px;">es6</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/jstips/" style="font-size: 16.67px;">jstips</a> <a href="/tags/myproject/" style="font-size: 10px;">myproject</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/react-native/" style="font-size: 18.33px;">react-native</a> <a href="/tags/sublimetext/" style="font-size: 10px;">sublimetext</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tools/" style="font-size: 11.67px;">tools</a> <a href="/tags/unity/" style="font-size: 13.33px;">unity</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/you-dont-know-js/" style="font-size: 10px;">you-dont-know-js</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/25/dva-model-subscriptions/">dva框架学习--Subscription订阅</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/vscode-regexp-repveiw/">vscode插件：正则表达式预览</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/you-dont-know-try-finally/">你可能不知道的try...finally</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/26/function-bind-polyfill/">写一个尽可能完善的Function.prototype.bind方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/12/gitbook-reader/">使用ReactNative开发的gitbook阅读器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 le0zh<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

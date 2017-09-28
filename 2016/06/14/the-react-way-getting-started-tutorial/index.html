@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>The React Way 1 (译) | le0zh&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文链接 https://blog.risingstack.com/the-react-way-getting-started-tutorial/本篇文章主要涵盖了react的主要设计思想和概念，并不涉及具体太多的语法，但个人觉得学习新的技术、框架时，其设计思想和概念往往比语法更需要深入了解和思考。  占坑， 未完待续。。。 现在，React.js正在高速发展，同时很多有趣的东西不断的问世。我的">
+<meta name="keywords" content="javascript,react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The React Way 1 (译)">
+<meta property="og:url" content="http://le0zh.github.io/2016/06/14/the-react-way-getting-started-tutorial/index.html">
+<meta property="og:site_name" content="le0zh&#39;s blog">
+<meta property="og:description" content="原文链接 https://blog.risingstack.com/the-react-way-getting-started-tutorial/本篇文章主要涵盖了react的主要设计思想和概念，并不涉及具体太多的语法，但个人觉得学习新的技术、框架时，其设计思想和概念往往比语法更需要深入了解和思考。  占坑， 未完待续。。。 现在，React.js正在高速发展，同时很多有趣的东西不断的问世。我的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://risingstack-blog.s3-eu-west-1.amazonaws.com/2015/08/react-js-tutorial-1_eb46e0b8ae8aa21640332a1052069483.png">
+<meta property="og:image" content="https://risingstack-blog.s3-eu-west-1.amazonaws.com/2015/04/react-js-tutorial-2.png">
+<meta property="og:updated_time" content="2017-09-25T01:57:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The React Way 1 (译)">
+<meta name="twitter:description" content="原文链接 https://blog.risingstack.com/the-react-way-getting-started-tutorial/本篇文章主要涵盖了react的主要设计思想和概念，并不涉及具体太多的语法，但个人觉得学习新的技术、框架时，其设计思想和概念往往比语法更需要深入了解和思考。  占坑， 未完待续。。。 现在，React.js正在高速发展，同时很多有趣的东西不断的问世。我的">
+<meta name="twitter:image" content="https://risingstack-blog.s3-eu-west-1.amazonaws.com/2015/08/react-js-tutorial-1_eb46e0b8ae8aa21640332a1052069483.png">
+  
+    <link rel="alternative" href="/atom.xml" title="le0zh&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">le0zh&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">//DON&#39;T PANIC</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://le0zh.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-the-react-way-getting-started-tutorial" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/14/the-react-way-getting-started-tutorial/" class="article-date">
+  <time datetime="2016-06-14T01:40:12.000Z" itemprop="datePublished">2016-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      The React Way 1 (译)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>原文链接 <a href="https://blog.risingstack.com/the-react-way-getting-started-tutorial/" target="_blank" rel="external">https://blog.risingstack.com/the-react-way-getting-started-tutorial/</a><br>本篇文章主要涵盖了react的主要设计思想和概念，并不涉及具体太多的语法，但个人觉得学习新的技术、框架时，其设计思想和概念往往比语法更需要深入了解和思考。</p>
+</blockquote>
+<p><em>占坑， 未完待续。。。</em></p>
+<p>现在，<a href="https://facebook.github.io/react/" target="_blank" rel="external">React.js</a>正在高速发展，同时很多有趣的东西不断的问世。我的朋友和同事不断的询问我关于如何开始使用React，以及如何用React的方式思考。</p>
+<p><img src="https://risingstack-blog.s3-eu-west-1.amazonaws.com/2015/08/react-js-tutorial-1_eb46e0b8ae8aa21640332a1052069483.png" alt="img"></p>
+<blockquote>
+<p>上图是 React 在编程领域的google搜索趋势。React最初发布是再2013年5月29号，版本号是v0.3.0</p>
+</blockquote>
+<p>然而，React并不是一个框架。是一些<strong>概念、类库和原则</strong>使其成为一个快速、简洁和优美的方式来开发客户端和服务器端的app。</p>
+<a id="more"></a>
+<p>在这个分为两部分的教程中，我将解释这些概念，同时建议使用哪些和如何使用。我们将涵盖下面这些技术：</p>
+<ul>
+<li>ES6 React</li>
+<li>虚拟DOM</li>
+<li>组件驱动的开发</li>
+<li>不变性(Immutability)</li>
+<li>从上而下的渲染</li>
+<li>渲染路径及优化</li>
+<li>通用的工具类库，用来打包，转换ES6，发起请求，调试，路由等</li>
+<li>同构的React</li>
+</ul>
+<p>当然，我们将会编写代码，我想让它尽量的切实可行。所有的代码都可以在<a href="https://github.com/RisingStack/react-way-getting-started" target="_blank" rel="external">RisingStack GitHub repository</a>中找到。</p>
+<h3 id="教程1：开始使用React-js"><a href="#教程1：开始使用React-js" class="headerlink" title="教程1：开始使用React.js"></a>教程1：开始使用React.js</h3><p>如果你已经对React熟悉了，理解了比如虚拟DOM、组件化思想的基础，那么本篇教程可能不太适合你。我们将在接下来的教程中讨论一些中级的话题，这些将会很有趣，我推荐你到时候回来再看。</p>
+<h4 id="React是一个框架么？"><a href="#React是一个框架么？" class="headerlink" title="React是一个框架么？"></a>React是一个框架么？</h4><p>简单来说， <strong>不，它不是一个框架</strong>。<br>那么它究竟是个什么东西，为什么这么多人热衷于开始使用呢？</p>
+<p>React是一个应用程序的<strong>视图(View)</strong>,他同时提供了不同的方式来组织我们的模板，使我们以组件化的方式思考。在React引用程序中，我们应该<strong>分解</strong>我们的站点、页面或者模块成<strong>一些小的组件</strong>。这些组件同时构建在其他不同的组件的组合之上。当一个问题比较棘手时，我们可以把它分解成一些更小的问题并解决。晚些时候，我们在其他地方可以<strong>重用</strong>这些小的组件。整个过程就像搭建乐高。我们在本篇文章的末尾将会深入探讨<strong>组件驱动的开发模式</strong>。</p>
+<p>React还使用了虚拟DOM，这使渲染速度变得飞快，同时保持了易理解性和可控性。我们可以和组件化的思想结合起来，获得自上而下渲染的能力。我们将在第二篇文章中讨论这个话题。</p>
+<p>好吧，我承认，到现在我还没有回答什么是React的问题。我们知道了组件化和快速渲染，但是为什么它就是一个游戏规则颠覆者呢？<br>因为<strong>React首先主要是一个概念，其次才是一个类库</strong>。有一些不同的类库已经在遵循这些思想，但有些许的差别。就像每一个编程概念一样，React也有自己的解决方案、工具和类库来形成一个生态系统。在这个生态系统中，你必须要选择自己的工具，构建自己的框架。我知道这听起来有些可拍，但是相信我，你已经知道这些工具中的大多数，我们将他们彼此链接起来，然后你将会惊奇的发现这一切是如此的简单。比如对于依赖处理，我们将不使用任何特殊的黑魔法，而是使用Node的<code>require</code>和npm。对于发布订阅，我们将使用Node的<code>EventEmitter</code>等等。</p>
+<p>你是否已经兴奋了呢？咱们继续。</p>
+<h4 id="简单的介绍虚拟DOM"><a href="#简单的介绍虚拟DOM" class="headerlink" title="简单的介绍虚拟DOM"></a>简单的介绍虚拟DOM</h4><p>为了能追踪模型的变化，并将他们应用于DOM(也成为渲染)，我们必须清楚下面两个重要的事情：</p>
+<ol>
+<li>什么时候数据发生了变化</li>
+<li>哪一个DOM元素需要被更新</li>
+</ol>
+<p>对于变化监测，React使用了一个观察者模型代替脏检查(持续的模型变化检查)。这就是为什么它不必去计算什么发生了改变，它能立即知道改变发生了。这减少了计算量使应用更平滑。但是真正酷的东西是它如何管理DOM操作的：</p>
+<p>对于DOM变化的挑战，React在内存中构建了代表DOM结构的树，并计算哪个DOM元素应该改变。DOM操作消耗很大，我们应该尽量减少。幸运的是，React试图尽可能的使DOM元素保持不变。考虑到很少的DOM操作可以被基于对象代表很快的计算出来，DOM改变带来的代价被很好的降低了。</p>
+<p>既然React的差异算法使用了代表DOM的树结构，并且当父级被更改时，会重新计算所有的子树节点，我们应该注意模型的变化，因为所有的子树节点将被重新渲染。<br>不要悲观，稍后我们将优化这一行为。(剧透一下：使用<code>shouldComponentUpdate()</code>和<code>ImmutableJS</code>)</p>
+<p><img src="https://risingstack-blog.s3-eu-west-1.amazonaws.com/2015/04/react-js-tutorial-2.png" alt="img"></p>
+<h4 id="如何在服务器端渲染"><a href="#如何在服务器端渲染" class="headerlink" title="如何在服务器端渲染?"></a>如何在服务器端渲染?</h4><p>Given the fact, that this kind of DOM representation uses fake DOM, it’s possible to render the HTML output on the server side as well (without JSDom, PhantomJS etc.). React is also smart enough to recognize that the markup is already there (from the server) and will add only the event handlers on the client side.</p>
+<p>既然这种DOM表示法使用的是假的DOM，那么就同样可以在服务端渲染出HTMl输出(不借助于JSDom, PhantomJS等)。React同样足够智能来识别已经存在的标记(从服务器端)，并将仅仅在客户端添加事件句柄。</p>
+<p>有趣的事实： React渲染出来的HTML标记都包含一个<code>data-reactid</code>属性，用来帮助React追踪DOM节点。</p>
+<h4 id="有用的链接，其他的虚拟DOM类库"><a href="#有用的链接，其他的虚拟DOM类库" class="headerlink" title="有用的链接，其他的虚拟DOM类库"></a>有用的链接，其他的虚拟DOM类库</h4><ul>
+<li><a href="http://calendar.perfplanet.com/2013/diff/" target="_blank" rel="external">React’s diff algorithm</a></li>
+<li><a href="http://fluentconf.com/fluent2014/public/schedule/detail/32395" target="_blank" rel="external">The Secrets of React’s virtual DOM</a></li>
+<li><a href="http://stackoverflow.com/questions/21109361/why-is-reacts-concept-of-virtual-dom-said-to-be-more-performant-than-dirty-mode" target="_blank" rel="external">Why is React’s concept of virtual DOM said to be more performant than dirty model checking?</a></li>
+<li><a href="https://github.com/Matt-Esch/virtual-dom" target="_blank" rel="external">virtual-dom</a></li>
+</ul>
+<h3 id="组件驱动的开发"><a href="#组件驱动的开发" class="headerlink" title="组件驱动的开发"></a>组件驱动的开发</h3><p>这曾经是我学习React时感觉最困难的部分之一。在组件驱动的开发中，你将不会再一个模板中看到整个站点。一开始你可能会认为这中方法很糟糕。但是我相信随后你会认识到分片和单一职责的力量。它使事情更容易理解和维护，和被测试所覆盖。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://le0zh.github.io/2016/06/14/the-react-way-getting-started-tutorial/" data-id="cj844v91m003s3ws6i2tl7aa0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/16/use-custom-view-engine-in-express/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在Express中使用自定义视图模板引擎
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/04/event-delegate-in-javascript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js中的事件代理（event delegation）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/exception/">exception</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/game/">game</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/myproject/">myproject</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react-native/">react-native</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题记录/">问题记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmd/">cmd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dva/">dva</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/express/">express</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jstips/">jstips</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/myproject/">myproject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react-native</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sublimetext/">sublimetext</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/">tips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/you-dont-know-js/">you-dont-know-js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/cmd/" style="font-size: 10px;">cmd</a> <a href="/tags/dva/" style="font-size: 10px;">dva</a> <a href="/tags/es6/" style="font-size: 11.67px;">es6</a> <a href="/tags/express/" style="font-size: 10px;">express</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/jstips/" style="font-size: 16.67px;">jstips</a> <a href="/tags/myproject/" style="font-size: 10px;">myproject</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/react-native/" style="font-size: 18.33px;">react-native</a> <a href="/tags/sublimetext/" style="font-size: 10px;">sublimetext</a> <a href="/tags/tips/" style="font-size: 10px;">tips</a> <a href="/tags/tools/" style="font-size: 11.67px;">tools</a> <a href="/tags/unity/" style="font-size: 13.33px;">unity</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/you-dont-know-js/" style="font-size: 10px;">you-dont-know-js</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/25/dva-model-subscriptions/">dva框架学习--Subscription订阅</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/18/vscode-regexp-repveiw/">vscode插件：正则表达式预览</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/you-dont-know-try-finally/">你可能不知道的try...finally</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/26/function-bind-polyfill/">写一个尽可能完善的Function.prototype.bind方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/12/gitbook-reader/">使用ReactNative开发的gitbook阅读器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 le0zh<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
